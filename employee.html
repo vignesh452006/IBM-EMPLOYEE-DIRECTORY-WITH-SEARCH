@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Directory with Search</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f0f2f5;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #0078d7;
+      color: white;
+      padding: 20px 0;
+      text-align: center;
+      font-size: 28px;
+      font-weight: bold;
+      letter-spacing: 1px;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .search-box {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 20px;
+    }
+    .search-box input {
+      width: 80%;
+      padding: 10px 15px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    .search-box input:focus {
+      border-color: #0078d7;
+      outline: none;
+      box-shadow: 0 0 5px rgba(0,120,215,0.4);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    th, td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+      text-align: left;
+    }
+    th {
+      background-color: #0078d7;
+      color: #fff;
+      font-size: 16px;
+    }
+    tr:nth-child(even) {
+      background-color: #f9f9f9;
+    }
+    tr:hover {
+      background-color: #f1f7ff;
+    }
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 14px;
+        padding: 10px;
+      }
+      .search-box input {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>Employee Directory</header>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search by name, department, or role...">
+    </div>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Department</th>
+          <th>Role</th>
+          <th>Email</th>
+          <th>Phone</th>
+        </tr>
+      </thead>
+      <tbody id="employeeBody"></tbody>
+    </table>
+  </div>
+  <script>
+    const employees = [
+      { name: 'Asha Kumar', dept: 'Engineering', role: 'Frontend Developer', email: 'asha.kumar@example.com', phone: '+91 98765 43210' },
+      { name: 'Ravi Sharma', dept: 'Engineering', role: 'Backend Developer', email: 'ravi.sharma@example.com', phone: '+91 91234 56789' },
+      { name: 'Meera Iyer', dept: 'HR', role: 'HR Manager', email: 'meera.iyer@example.com', phone: '+91 99887 66554' },
+      { name: 'Karan Patel', dept: 'Design', role: 'UI/UX Designer', email: 'karan.patel@example.com', phone: '+91 90123 45678' },
+      { name: 'Sana Khan', dept: 'Sales', role: 'Account Executive', email: 'sana.khan@example.com', phone: '+91 90909 90909' },
+      { name: 'Arjun Nair', dept: 'Marketing', role: 'SEO Specialist', email: 'arjun.nair@example.com', phone: '+91 98877 66554' }
+    ];
+
+    const employeeBody = document.getElementById('employeeBody');
+    const searchInput = document.getElementById('searchInput');
+
+    function displayEmployees(list) {
+      employeeBody.innerHTML = list.map(emp => `
+        <tr>
+          <td>${emp.name}</td>
+          <td>${emp.dept}</td>
+          <td>${emp.role}</td>
+          <td>${emp.email}</td>
+          <td>${emp.phone}</td>
+        </tr>
+      `).join('');
+    }
+
+    searchInput.addEventListener('input', () => {
+      const query = searchInput.value.toLowerCase();
+      const filtered = employees.filter(emp =>
+        emp.name.toLowerCase().includes(query) ||
+        emp.dept.toLowerCase().includes(query) ||
+        emp.role.toLowerCase().includes(query)
+      );
+      displayEmployees(filtered);
+    });
+
+    displayEmployees(employees);
+  </script>
+</body>
+</html>
