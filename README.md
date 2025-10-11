@@ -97,7 +97,7 @@ Go to Settings → Pages → Branch: main → / (root)
 
 Click Save — your project will be live at
 
-https://yourusername.github.io/employee-directory/
+ https://vignesh452006.github.io/IBM-EMPLOYEE-DIRECTORY-WITH-SEARCH/
 
 👨‍💻 Author
 
