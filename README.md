@@ -33,7 +33,7 @@ employee-directory/
 
 Clone the repository:
 
-git clone https://github.com/yourusername/employee-directory.git
+git clone :https://github.com/vignesh452006/IBM-EMPLOYEE-DIRECTORY-WITH-SEARCH.git
 
 
 Open in VS Code or any IDE.
