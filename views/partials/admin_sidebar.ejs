@@ -1,0 +1,40 @@
+<aside class="admin-sidebar" id="adminSidebar">
+  <div class="admin-brand">
+    <span class="brand-icon">🧑‍💼</span>
+    <span class="brand-text">Team<span class="accent">Base</span></span>
+  </div>
+
+  <nav class="admin-nav">
+    <a href="/admin/dashboard" class="admin-nav-link <%= currentPath === '/admin/dashboard' ? 'active' : '' %>">
+      <span class="nav-ic">📊</span> Dashboard
+    </a>
+    <a href="/admin/employees" class="admin-nav-link <%= currentPath.startsWith('/admin/employees') ? 'active' : '' %>">
+      <span class="nav-ic">👥</span> Employees
+    </a>
+    <a href="/admin/departments" class="admin-nav-link <%= currentPath === '/admin/departments' ? 'active' : '' %>">
+      <span class="nav-ic">🏢</span> Departments
+    </a>
+    <a href="/admin/activity" class="admin-nav-link <%= currentPath === '/admin/activity' ? 'active' : '' %>">
+      <span class="nav-ic">🕒</span> Activity Log
+    </a>
+    <a href="/admin/profile" class="admin-nav-link <%= currentPath === '/admin/profile' ? 'active' : '' %>">
+      <span class="nav-ic">⚙️</span> My Profile
+    </a>
+    <a href="/" class="admin-nav-link" target="_blank">
+      <span class="nav-ic">🌐</span> View Site
+    </a>
+  </nav>
+
+  <div class="admin-sidebar-footer">
+    <div class="admin-user">
+      <div class="admin-avatar"><%= currentAdmin.name.charAt(0).toUpperCase() %></div>
+      <div>
+        <p class="admin-user-name"><%= currentAdmin.name %></p>
+        <p class="admin-user-role"><%= currentAdmin.role.replace('_', ' ') %></p>
+      </div>
+    </div>
+    <form action="/admin/logout" method="POST">
+      <button type="submit" class="logout-btn">Logout</button>
+    </form>
+  </div>
+</aside>

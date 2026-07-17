@@ -1,0 +1,184 @@
+:root {
+  --accent: #0f7d72;
+  --accent-dark: #0b5c54;
+  --accent-soft: #e3f2ef;
+  --navy: #16233e;
+  --navy-2: #1d2f52;
+  --bg: #f4f6f9;
+  --card-border: #e5e9f0;
+  --success-soft: #e6f4ea;
+  --warning-soft: #fdf1de;
+  --info-soft: #e6f0fb;
+  --font-display: 'Space Grotesk', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+[data-bs-theme="dark"] {
+  --bg: #0f1522;
+  --card-border: #26314a;
+  --accent-soft: #123833;
+  --success-soft: #113322;
+  --warning-soft: #3a2f14;
+  --info-soft: #142a44;
+}
+
+body {
+  background-color: var(--bg);
+  font-family: var(--font-body);
+  color: var(--bs-body-color);
+}
+
+h1, h2, h3, h4, h5, .brand-text, .stat-value {
+  font-family: var(--font-display);
+}
+
+/* Navbar */
+.app-navbar {
+  background: linear-gradient(120deg, var(--navy), var(--navy-2));
+  padding: 0.85rem 0;
+}
+.brand-mark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.5px;
+}
+.brand-text {
+  color: #fff;
+  font-weight: 600;
+  font-size: 1.1rem;
+  letter-spacing: 0.2px;
+}
+
+/* Buttons */
+.btn-accent {
+  background-color: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.btn-accent:hover, .btn-accent:focus {
+  background-color: var(--accent-dark);
+  border-color: var(--accent-dark);
+  color: #fff;
+}
+.text-accent { color: var(--accent) !important; }
+.bg-accent-soft { background-color: var(--accent-soft) !important; }
+.bg-success-soft { background-color: var(--success-soft) !important; }
+.bg-warning-soft { background-color: var(--warning-soft) !important; }
+.bg-info-soft { background-color: var(--info-soft) !important; }
+
+/* Stat cards */
+.stat-card {
+  background: var(--bs-body-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: 1.1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  height: 100%;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+}
+.stat-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+.stat-value {
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--bs-secondary-color);
+  margin-top: 2px;
+}
+
+/* Toolbar & table cards */
+.toolbar-card, .card {
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+}
+
+.sortable { cursor: pointer; user-select: none; }
+.sortable:hover { color: var(--accent); }
+.sortable i { font-size: 0.72rem; opacity: 0.55; }
+
+#employeeTable thead th {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--bs-secondary-color);
+  border-bottom-width: 1px;
+  white-space: nowrap;
+}
+
+.emp-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  object-fit: cover;
+  background: var(--accent-soft);
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  font-family: var(--font-display);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+.emp-name-cell {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.emp-name { font-weight: 600; }
+.emp-email { font-size: 0.8rem; color: var(--bs-secondary-color); }
+
+.status-pill {
+  font-size: 0.72rem;
+  font-weight: 600;
+  padding: 0.28rem 0.6rem;
+  border-radius: 999px;
+  text-transform: capitalize;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.status-active { background: var(--success-soft); color: #1e7a3d; }
+.status-inactive { background: #f1f1f3; color: #6b6b76; }
+.status-on_leave { background: var(--warning-soft); color: #a6650f; }
+
+.row-actions .btn {
+  padding: 0.3rem 0.5rem;
+}
+
+#connectionStatus.text-bg-success i { color: #7fffb0; }
+#connectionStatus.text-bg-danger i { color: #ffb0b0; }
+
+.toast { background-color: var(--navy); color: #fff; }
+
+@media (max-width: 575.98px) {
+  .stat-card { padding: 0.85rem; }
+  .stat-value { font-size: 1.2rem; }
+}

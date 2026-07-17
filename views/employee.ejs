@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<%- include('partials/head') %>
+</head>
+<body>
+<div class="toast-stack" id="toastStack"></div>
+<%- include('partials/navbar') %>
+
+<main class="container profile-main">
+  <a href="/" class="back-link fade-up">&larr; Back to directory</a>
+
+  <div class="profile-card fade-up delay-1">
+    <div class="profile-header">
+      <img src="<%= employee.avatar_url || 'https://ui-avatars.com/api/?background=6366f1&color=fff&size=256&name=' + encodeURIComponent(employee.full_name) %>" class="profile-avatar" alt="<%= employee.full_name %>">
+      <div class="profile-heading">
+        <h1><%= employee.full_name %> <span class="status-dot status-<%= employee.status %>" title="<%= employee.status %>"></span></h1>
+        <p class="profile-role"><%= employee.job_title || 'Team Member' %></p>
+        <% if (employee.department_name) { %>
+          <span class="dept-badge" style="--badge-color: <%= employee.department_color %>"><%= employee.department_name %></span>
+        <% } %>
+      </div>
+    </div>
+
+    <% if (employee.bio) { %>
+      <p class="profile-bio"><%= employee.bio %></p>
+    <% } %>
+
+    <div class="profile-grid">
+      <div class="info-block">
+        <span class="info-label">Email</span>
+        <a href="mailto:<%= employee.email %>" class="info-value link"><%= employee.email %></a>
+      </div>
+      <% if (employee.phone) { %>
+      <div class="info-block">
+        <span class="info-label">Phone</span>
+        <a href="tel:<%= employee.phone %>" class="info-value link"><%= employee.phone %></a>
+      </div>
+      <% } %>
+      <% if (employee.location) { %>
+      <div class="info-block">
+        <span class="info-label">Location</span>
+        <span class="info-value">📍 <%= employee.location %></span>
+      </div>
+      <% } %>
+      <% if (employee.employee_code) { %>
+      <div class="info-block">
+        <span class="info-label">Employee ID</span>
+        <span class="info-value"><%= employee.employee_code %></span>
+      </div>
+      <% } %>
+      <% if (employee.hire_date) { %>
+      <div class="info-block">
+        <span class="info-label">Hire Date</span>
+        <span class="info-value"><%= new Date(employee.hire_date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' }) %></span>
+      </div>
+      <% } %>
+    </div>
+
+    <% if (employee.skills) { %>
+      <div class="skills-wrap">
+        <span class="info-label">Skills</span>
+        <div class="skill-tags">
+          <% employee.skills.split(',').forEach(function(skill) { %>
+            <span class="skill-tag"><%= skill.trim() %></span>
+          <% }) %>
+        </div>
+      </div>
+    <% } %>
+
+    <div class="social-links">
+      <% if (employee.linkedin_url) { %><a href="<%= employee.linkedin_url %>" target="_blank" rel="noopener" class="social-btn">LinkedIn</a><% } %>
+      <% if (employee.github_url) { %><a href="<%= employee.github_url %>" target="_blank" rel="noopener" class="social-btn">GitHub</a><% } %>
+      <% if (employee.twitter_url) { %><a href="<%= employee.twitter_url %>" target="_blank" rel="noopener" class="social-btn">Twitter</a><% } %>
+    </div>
+  </div>
+
+  <% if (related && related.length) { %>
+    <h2 class="section-title fade-up">More in <%= employee.department_name %></h2>
+    <div class="employee-grid">
+      <% related.forEach(function(r, i) { %>
+        <a href="/employee/<%= r.id %>" class="employee-card fade-up" style="animation-delay: <%= i * 0.05 %>s">
+          <div class="card-top">
+            <img src="<%= r.avatar_url || 'https://ui-avatars.com/api/?background=6366f1&color=fff&name=' + encodeURIComponent(r.full_name) %>" alt="<%= r.full_name %>" class="avatar">
+            <span class="status-dot status-<%= r.status %>"></span>
+          </div>
+          <h3 class="emp-name"><%= r.full_name %></h3>
+          <p class="emp-role"><%= r.job_title || 'Team Member' %></p>
+        </a>
+      <% }) %>
+    </div>
+  <% } %>
+</main>
+
+<%- include('partials/footer') %>
+</body>
+</html>
